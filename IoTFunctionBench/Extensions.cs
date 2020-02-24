@@ -38,7 +38,7 @@ namespace IoTFunctionBench
             }
             stopwatch.Stop();
 
-            return $"Generated {iterations} GUIDs in {stopwatch.Elapsed}.";
+            return $"Generated {iterations:N0} GUIDs in {stopwatch.Elapsed}.";
         }
     }
 }

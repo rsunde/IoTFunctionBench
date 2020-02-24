@@ -12,6 +12,8 @@ namespace IoTFunctionBench
 {
     public static class SystemInfo
     {
+        private const int ITERATIONS = 10000000;
+
         [FunctionName("SystemInfo")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
@@ -45,10 +47,15 @@ namespace IoTFunctionBench
             result.Add($"Assembly ManifestModule: {assem.ManifestModule.ToString()}");
             result.Add($"Assembly ImageRuntimeVersion: {assem.ImageRuntimeVersion.ToString()}");
             result.Add();
-            result.Add(Extensions.Benchmark(100000000));
-            result.Add(" 100,000,000 Takes ~ 11.5 seconds on MSI");
-            result.Add(" 100,000,000 Takes ~ xx.x seconds on Lenovo");
-            result.Add(" 100,000,000 Takes ~ xx.x seconds in Azure basic");
+            result.Add($"Local time where function is running: {DateTime.UtcNow}");
+            result.Add();
+            result.Add(Extensions.Benchmark(ITERATIONS));
+            result.Add($" {ITERATIONS:N0} Takes ~ 1.5 seconds on MSI");
+            result.Add($" {ITERATIONS:N0} Takes ~ 1.5 seconds on Lenovo");
+            result.Add($" {ITERATIONS:N0} Takes ~ 8.5 seconds in Azure basic");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI Azure IoT");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI Docker");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI dotnet Core");
 
             return new OkObjectResult($"System information:{Environment.NewLine}{result.ToStringRows(" - ")}");
         }
