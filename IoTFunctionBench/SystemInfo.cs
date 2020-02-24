@@ -50,12 +50,12 @@ namespace IoTFunctionBench
             result.Add($"Local time where function is running: {DateTime.UtcNow}");
             result.Add();
             result.Add(Extensions.Benchmark(ITERATIONS));
-            result.Add($" {ITERATIONS:N0} Takes ~ 1.5 seconds on MSI");
-            result.Add($" {ITERATIONS:N0} Takes ~ 1.5 seconds on Lenovo");
-            result.Add($" {ITERATIONS:N0} Takes ~ 8.5 seconds in Azure basic");
-            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI Azure IoT");
-            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI Docker");
-            result.Add($" {ITERATIONS:N0} Takes ~ x.x seconds in RPI dotnet Core");
+            result.Add($" {ITERATIONS:N0} Takes ~ 1.15 seconds on MSI");
+            result.Add($" {ITERATIONS:N0} Takes ~ 1.35 seconds on Lenovo");
+            result.Add($" {ITERATIONS:N0} Takes ~ 8.75 seconds in Azure basic");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.xx seconds in RPI Azure IoT");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.xx seconds in RPI Docker");
+            result.Add($" {ITERATIONS:N0} Takes ~ x.xx seconds in RPI dotnet Core");
 
             return new OkObjectResult($"System information:{Environment.NewLine}{result.ToStringRows(" - ")}");
         }
